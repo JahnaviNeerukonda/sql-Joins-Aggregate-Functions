@@ -1,0 +1,7 @@
+--ex1
+select * from emp 
+where esal in (select esal from emp where esal>20000);
+
+--ex2
+delete from emp 
+where eno in(select eno from emp where eno=3);
