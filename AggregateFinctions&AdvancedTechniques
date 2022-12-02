@@ -1,0 +1,19 @@
+select sum(sal) from emp;
+
+select empno,ename,sal, sum(sal) over() as tot_sal from emp;
+
+select empno,ename,sal,job,sum(sal) over(partition by job) as salary from emp order by job;
+
+select empno,ename,sal,avg(sal) over(partition by job) as avg_salary from emp order by job;
+
+select empno,ename,sal,deptno,ROW_NUMBER() over(partition by deptno order by empno)as row_num from emp;
+
+select empno,ename,deptno,rank() over(order by deptno) as RNK from emp;
+
+select empno,ename,deptno,dense_rank() over(order by deptno) as RNK from emp;
+
+select empno,ename,job,sal,rank() over(partition by job order by sal desc)as rnk from emp;
+
+select empno,ename,job,FIRST_VALUE(hiredate)over(partition by job order by hiredate desc)from emp;
+
+select empno,hiredate,job,last_VALUE(hiredate) over (partition by job order by job range between unbounded preceding and unbounded following)highest_age from emp;
