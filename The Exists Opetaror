@@ -1,0 +1,3 @@
+select eno,ename,eage from employe where exists (select eno from employe where esal>20000);
+select eno,ename from employe where exists (select eno from employe where eage>20);
+select eno,ename,esal from employe where exists (select eno from employe where eage>20);
